@@ -1,16 +1,157 @@
-# React + Vite
+# 🚀 GitHub Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application to search GitHub users and explore their repositories with a clean UI, pagination, sorting, and filtering.
 
-Currently, two official plugins are available:
+## 📌 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 🔍 User Search
 
-## React Compiler
+* Search GitHub users using GitHub API
+* Debounced input (optimized API calls)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👤 User Repositories
 
-## Expanding the ESLint configuration
+* View repositories of selected user
+* Display repo details:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  * Name
+  * Description
+  * Stars 
+  * Forks 
+  * Language
+
+### ⚡ Performance & UX
+
+* Debouncing (reduces API calls)
+* Skeleton loading (premium UX)
+* Loading / Error / Empty states
+
+### 📊 Sorting & Filtering
+
+* Sort by:
+
+  * Stars ⭐
+  * Forks 🍴
+* Filter by programming language
+
+### 📄 Pagination
+
+* API-based pagination
+* Shows only existing pages (no fake numbers)
+
+### 🎨 UI/UX
+
+* Modern responsive design
+* Dark mode support 
+* Clean card layout
+* Smooth hover effects
+
+---
+
+## 🛠️ Tech Stack
+
+* React (Functional Components)
+* React Router DOM
+* JavaScript (ES6+)
+* CSS (Custom + Responsive)
+* GitHub REST API
+
+---
+
+## 📂 Folder Structure
+
+```
+src/
+│── components/
+│   ├── Loader.jsx
+│   ├── Error.jsx
+│   ├── Repositorie.jsx
+│
+│── pages/
+│   ├── Home.jsx
+│   ├── UserRepos.jsx
+│
+│── Custom_hooks/
+│   ├── useDebounce.js
+│   ├── useRepos.js
+│
+│── services/
+│   ├── githubApi.js
+│
+│── css/
+│   ├── home.css
+│   ├── repo.css
+│   ├── controls.css
+│   ├── global.css
+│
+│── App.jsx
+│── main.jsx
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+# Clone repository
+git clone https://github.com/your-username/github-explorer.git
+
+# Navigate to project
+cd github-explorer
+
+# Install dependencies
+npm install
+
+# Run project
+npm run dev
+```
+
+---
+
+## 📡 API Used
+
+* GitHub API:
+
+```
+https://api.github.com
+```
+
+Endpoints:
+
+* Search users:
+
+```
+/search/users?q={query}
+```
+---
+
+## 🎯 Future Improvements
+
+* 🔥 Infinite scroll
+* ⭐ Bookmark repositories (localStorage)
+* 📈 Advanced pagination (1 2 3 ... n)
+* 🌐 URL-based pagination
+* 🎨 UI animations (Framer Motion)
+
+---
+
+## 💬 Learnings
+
+* Handling API calls efficiently using debouncing
+* Managing UI states (loading, error, empty)
+* Building reusable components
+* Implementing real-world pagination
+
+---
+
+## 👨‍💻 Author
+
+**Vijay Dinodia**
+
+* GitHub: https://github.com/vijaydinodia
+* 
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub and share it 🚀

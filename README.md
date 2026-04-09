@@ -29,7 +29,6 @@ A modern React application to search GitHub users and explore their repositories
 ### 📊 Sorting & Filtering
 
 * Sort by:
-
   * Stars ⭐
   * Forks 🍴
 * Filter by programming language
@@ -123,16 +122,6 @@ Endpoints:
 ```
 /search/users?q={query}
 ```
----
-
-## 🎯 Future Improvements
-
-* 🔥 Infinite scroll
-* ⭐ Bookmark repositories (localStorage)
-* 📈 Advanced pagination (1 2 3 ... n)
-* 🌐 URL-based pagination
-* 🎨 UI animations (Framer Motion)
-
 ---
 
 ## 💬 Learnings

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import "../css/repo.css";
 import "../css/controls.css";
 
@@ -7,16 +7,20 @@ const UserRepos = () => {
   const { username } = useParams();
   const navigate = useNavigate();
 
+  //  URL pagination
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = Number(searchParams.get("page")) || 1;
+
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [page, setPage] = useState(1);
   const [sort, setSort] = useState("");
   const [language, setLanguage] = useState("");
+  const [searchUser, setSearchUser] = useState("");
 
   const perPage = 8;
 
-  // ✅ FETCH REPOS
+  //  fetch repos
   useEffect(() => {
     const fetchRepos = async () => {
       setLoading(true);
@@ -35,8 +39,21 @@ const UserRepos = () => {
     fetchRepos();
   }, [username, page]);
 
-  // ✅ SORT + FILTER
-  let filteredRepos = repos
+  // search user
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && searchUser.trim()) {
+      navigate(`/user/${searchUser}?page=1`);
+      setSearchUser("");
+    }
+  };
+
+  //  page change
+  const handlePageChange = (newPage) => {
+    setSearchParams({ page: newPage });
+  };
+
+  // sort + filter
+  const filteredRepos = repos
     .filter((repo) =>
       language
         ? repo.language?.toLowerCase().includes(language.toLowerCase())
@@ -48,7 +65,7 @@ const UserRepos = () => {
       return 0;
     });
 
-  // ✅ REAL PAGINATION
+  //  pagination logic
   const getVisiblePages = () => {
     const pages = [];
     if (page > 1) pages.push(page - 1);
@@ -59,15 +76,25 @@ const UserRepos = () => {
 
   return (
     <div className="container">
-      {/* 🔙 HEADER */}
+      {/*  HEADER */}
       <div className="header">
         <button className="back-btn" onClick={() => navigate(-1)}>
           ← Back
         </button>
-        <h2>{username}'s Repositories</h2>
+
+        <h2 className="header-title">{username}'s Repositories</h2>
+
+        <input
+          className="header-search"
+          type="text"
+          placeholder="Search another user..."
+          value={searchUser}
+          onChange={(e) => setSearchUser(e.target.value)}
+          onKeyDown={handleSearch}
+        />
       </div>
 
-      {/* 🔥 CONTROLS */}
+      {/*  CONTROLS */}
       <div className="controls">
         <select
           className="control-select"
@@ -86,7 +113,7 @@ const UserRepos = () => {
         />
       </div>
 
-      {/* 🧠 SKELETON LOADING */}
+      {/*  SKELETON */}
       {loading ? (
         <div className="repo-grid">
           {Array.from({ length: 8 }).map((_, index) => (
@@ -100,7 +127,7 @@ const UserRepos = () => {
         </div>
       ) : (
         <>
-          {/* 📦 REPOS */}
+          {/* REPOS */}
           <div className="repo-grid">
             {filteredRepos.map((repo) => (
               <div className="repo-card" key={repo.id}>
@@ -120,9 +147,12 @@ const UserRepos = () => {
             ))}
           </div>
 
-          {/* 📌 PAGINATION */}
+          {/* PAGINATION */}
           <div className="pagination">
-            <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+            <button
+              disabled={page === 1}
+              onClick={() => handlePageChange(page - 1)}
+            >
               Prev
             </button>
 
@@ -130,7 +160,7 @@ const UserRepos = () => {
               <button
                 key={p}
                 className={page === p ? "active" : ""}
-                onClick={() => setPage(p)}
+                onClick={() => handlePageChange(p)}
               >
                 {p}
               </button>
@@ -138,7 +168,7 @@ const UserRepos = () => {
 
             <button
               disabled={repos.length < perPage}
-              onClick={() => setPage(page + 1)}
+              onClick={() => handlePageChange(page + 1)}
             >
               Next
             </button>

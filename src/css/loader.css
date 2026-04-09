@@ -1,0 +1,11 @@
+.loader {
+  height: 80px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #eee, #ddd, #eee);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px; }
+  100% { background-position: 200px; }
+}

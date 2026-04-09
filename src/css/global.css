@@ -1,0 +1,56 @@
+:root {
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --text: #24292f;
+  --border: #d0d7de;
+  --primary: #6366f1;
+}
+
+body.dark {
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #c9d1d9;
+  --border: #30363d;
+  --primary: #818cf8;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 15px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+}
+
+.pagination button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination .active {
+  background: var(--primary);
+  color: white;
+}

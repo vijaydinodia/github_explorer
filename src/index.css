@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f7fa;
+  color: #111;
+  transition: all 0.3s ease;
+}
+
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.search {
+  width: 300px;
+  max-width: 90%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+body.dark .search {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+}
+
+.controls {
+  margin: 20px 0;
+}
+
+.controls select,
+.controls input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+body.dark .controls select,
+body.dark .controls input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+}
+
+.theme-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #111;
+  color: white;
+  cursor: pointer;
+}
+
+body.dark .theme-btn {
+  background: #e2e8f0;
+  color: #111;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
